@@ -1,0 +1,3 @@
+-getResponse(String data, Writer writer, RequestHandlerThread t)
+data: the name of the requested file
+sample value: testDownload.txt

@@ -1,0 +1,3 @@
+-getResponse(String data, Writer writer, RequestHandlerThread t)
+data: username
+sample value: user1

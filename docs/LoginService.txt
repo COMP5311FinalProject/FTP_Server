@@ -1,0 +1,3 @@
+-getResponse(String data, Writer writer, RequestHandlerThread t)
+data: password
+sample value: 123456

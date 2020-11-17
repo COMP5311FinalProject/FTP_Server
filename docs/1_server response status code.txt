@@ -1,0 +1,15 @@
+150 ASCII mode transfer
+150 Binary mode transfer
+150 Opening channel for rootDir file info list transfer
+
+200 ip and port for file transfer have been set up
+210 cannot find root directory
+220 requested file does not exist
+220 file transfer to client complete
+226 file info list transfer complete
+226 file transfer to server complete
+230 User("_username_placeholder") has logged in
+
+331 please input your password
+
+530 wrong password
