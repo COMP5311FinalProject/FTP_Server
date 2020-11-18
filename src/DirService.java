@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 
 /*
@@ -33,7 +34,9 @@ public class DirService implements Service {
                 }else{
                     flag = "f";
                 }
-                String fileInfo = flag+"rw-rw-rw-   1 ftp      ftp            "+f.length()+" Dec 30 17:07 "+f.getName();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String timeStamp = formatter.format(f.lastModified());
+                String fileInfo = flag+"rw-rw-rw-   1 ftp      ftp            "+f.length()+" "+timeStamp+" "+f.getName();
                 System.out.println(fileInfo);
                 allFileInfo.add(fileInfo);
             }

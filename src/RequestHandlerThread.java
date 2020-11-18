@@ -45,6 +45,10 @@ public class RequestHandlerThread extends Thread{
         return port;
     }
 
+    public Socket getSocket() {
+        return socket;
+    }
+
     public void setPort(String port) {
         this.port = port;
     }

@@ -11,8 +11,10 @@ public class ServiceFactory {
                 return new PortService();
             case "RETR":
                 return new RetrService();
-            case"STOR":
+            case "STOR":
                 return new StoreService();
+            case "QUIT":
+                return new QuitService();
             default:
                 return null;
         }

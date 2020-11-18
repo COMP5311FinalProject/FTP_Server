@@ -6,6 +6,7 @@
 210 cannot find root directory
 220 requested file does not exist
 220 file transfer to client complete
+221 goodbye client
 226 file info list transfer complete
 226 file transfer to server complete
 230 User("_username_placeholder") has logged in
