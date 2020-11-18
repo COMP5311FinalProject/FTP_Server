@@ -1,3 +1,5 @@
 -getResponse(String data, Writer writer, RequestHandlerThread t)
 data: "IP,port"
 sample value: 127.0.0.1,9235
+
+sample client request to call this service: "MYPORT 127.0.0.1,9235"

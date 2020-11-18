@@ -1,3 +1,5 @@
 -getResponse(String data, Writer writer, RequestHandlerThread t)
 data: null
 sample value: null
+
+sample client request to call this service: "LIST"

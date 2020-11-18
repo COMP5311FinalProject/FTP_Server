@@ -1,3 +1,5 @@
 -getResponse(String data, Writer writer, RequestHandlerThread t)
 data: password
 sample value: 123456
+
+sample client request to call this service: "USER 123456"

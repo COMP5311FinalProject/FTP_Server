@@ -1,3 +1,5 @@
 -getResponse(String data, Writer writer, RequestHandlerThread t)
 data: name of the file to be upload
 sample value: testUpload.txt
+
+sample client request to call this service: "STOR testUpload.txt"
