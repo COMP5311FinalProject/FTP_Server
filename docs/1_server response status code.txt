@@ -14,3 +14,5 @@
 331 please input your password
 
 530 wrong password
+
+2271 Switching to passive mode

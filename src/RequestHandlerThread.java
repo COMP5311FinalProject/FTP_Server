@@ -22,11 +22,18 @@ public class RequestHandlerThread extends Thread{
 
     private String port;
 
+    private String mode = "control";
+
     //login status
     private boolean isLogin = false;
 
     public RequestHandlerThread(Socket socket){
         this.socket = socket;
+    }
+
+    public RequestHandlerThread(Socket socket, String mode){
+        this.socket = socket;
+        this.mode = mode;
     }
 
     public void setIsLogin(boolean isLogin){

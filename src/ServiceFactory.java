@@ -15,6 +15,8 @@ public class ServiceFactory {
                 return new StoreService();
             case "QUIT":
                 return new QuitService();
+            case "PASV":
+                return new PasvService();
             default:
                 return null;
         }
