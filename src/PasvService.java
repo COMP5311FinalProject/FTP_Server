@@ -45,9 +45,16 @@ public class PasvService implements Service {
             writer.flush();
 
             //start a new thread to complete data transfer.
+            //serverSocket是启动在服务器端的。这里的dataSocket是客户端请求过来的。
+            //这个dataSocket就是传输data的socket，与之相对应的是传输command的socket
             Socket dataSocket = serverSocket.accept();
-            RequestHandlerThread dataThread = new RequestHandlerThread(dataSocket,"data");
-            dataThread.start();
+            /**
+             * 在当前线程上设置被动模式的socket,在执行RETR等命令的时候，
+             * 先检查pasvSocket是否为空，若为空，说明为主动模式.详情看RETRService
+             */
+            t.setPasvSocket(dataSocket);
+//            RequestHandlerThread dataThread = new RequestHandlerThread(dataSocket,"data");
+//            dataThread.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

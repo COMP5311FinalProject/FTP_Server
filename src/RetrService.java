@@ -20,7 +20,20 @@ public class RetrService implements Service {
                 writer.flush();
 
                 //set up socket for file transfer
-                Socket fSocket = new Socket(t.getIP(),Integer.parseInt(t.getPort()));
+                Socket fSocket = null;
+                if(t.getPasvSocket() != null) {
+                    /**
+                     * 因为被动模式下，serverSocket是启动在服务器端的，我们不需要在new一个socket，
+                     * 我们只需获取到serverSocket.accept()的socket即可。这里获取到的socket就是服务器和客户端data传输的socket
+                     */
+                    fSocket = t.getPasvSocket();
+                } else {
+                    /**
+                     * 这里new一个socket是为了连接客户端启动的serverSocket
+                     * 客户端通过PORT命令告诉服务器端 我的serverSocket启动在哪个端口，你到时候直接连那个端口就行了
+                     */
+                    fSocket = new Socket(t.getIP(),Integer.parseInt(t.getPort()));
+                }
 
                 //declare input and output stream, and stream buffer for file transfer
                 BufferedOutputStream output = new BufferedOutputStream(fSocket.getOutputStream());

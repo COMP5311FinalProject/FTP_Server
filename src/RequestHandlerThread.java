@@ -24,6 +24,8 @@ public class RequestHandlerThread extends Thread{
 
     private String mode = "control";
 
+    private Socket pasvSocket;
+
     //login status
     private boolean isLogin = false;
 
@@ -64,6 +66,14 @@ public class RequestHandlerThread extends Thread{
         return rootDir;
     }
 
+    public Socket getPasvSocket() {
+        return pasvSocket;
+    }
+
+    public void setPasvSocket(Socket pasvSocket) {
+        this.pasvSocket = pasvSocket;
+    }
+
     public void run(){
         System.out.println("=======new client connected======");
 
@@ -102,10 +112,15 @@ public class RequestHandlerThread extends Thread{
                             String response = "502 cannot resolve requested service type";
                         }else{
                             //extract param data if any
-                            String data = "";
-                            if(rawData.length >= 2){
-                                data = rawData[1];
-                            }
+//                            String data = "";
+//                            if(rawData.length >= 2){
+//                                data = rawData[1];
+//                            }
+                            /**
+                             * 防止文件名中有空格，如果有空格上边的代码无法获取到完整文件名
+                             */
+                            int index = request.indexOf(" ");
+                            String data = request.substring(index+1);
                             //run requested service
                             service.getResponse(data,writer,this);
                         }

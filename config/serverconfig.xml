@@ -3,7 +3,8 @@
     <port>21</port>
 
     <!--server work directory-->
-    <rootDir>D:\temp_stuff\test_server_bank</rootDir>
+<!--    <rootDir>D:\temp_stuff\test_server_bank</rootDir>-->
+    <rootDir>C:\Users\Fan\Desktop\FTP\FTPServer</rootDir>
 
     <!--authorized user infos-->
     <users>
