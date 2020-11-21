@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.io.Writer;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /*
 set up IP and port for file transfer
  */
@@ -10,13 +13,15 @@ public class PortService implements Service {
         System.out.println(data);
 
         String[] rawData = data.split(",");
-        String ip = rawData[0];
-        String port = rawData[1];
+        String dataIp = rawData[0];
+        String dataPort = rawData[1];
 
-        t.setIP(ip);
-        t.setPort(port);
-        System.out.println("set up file transfer ip: "+ip);
-        System.out.println("set up file transfer port: "+port);
+
+        t.setDataIP(dataIp);
+        t.setDataPort(dataPort);
+
+        System.out.println("set up file transfer ip: "+dataIp);
+        System.out.println("set up file transfer port: "+dataPort);
 
         try {
             writer.write("200 ip and port for file transfer have been set up\r\n");

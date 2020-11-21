@@ -1,4 +1,5 @@
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 /*
@@ -10,6 +11,8 @@ public class RetrService implements Service {
         System.out.println("-------executing RetrService-------");
         System.out.println(data);
 
+        Socket fSocket = null;
+
         String scDir = t.getRootDir() + File.separator + data;
         File scDirF= new File(scDir);
 
@@ -20,7 +23,7 @@ public class RetrService implements Service {
                 writer.flush();
 
                 //set up socket for file transfer
-                Socket fSocket = new Socket(t.getIP(),Integer.parseInt(t.getPort()));
+                fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
 
                 //declare input and output stream, and stream buffer for file transfer
                 BufferedOutputStream output = new BufferedOutputStream(fSocket.getOutputStream());
@@ -32,6 +35,7 @@ public class RetrService implements Service {
                     output.write(buffer,0,bytesRead);
                 }
                 output.flush();
+                output.close();
                 input.close();
                 fSocket.close();
 

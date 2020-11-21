@@ -23,7 +23,7 @@ public class StoreService implements Service{
             String inputFileDir = t.getRootDir() + "/" + data;
             RandomAccessFile inputFile = new RandomAccessFile(inputFileDir,"rw");
 
-            Socket fSocket = new Socket(t.getIP(),Integer.parseInt(t.getPort()));
+            Socket fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
             InputStream input = fSocket.getInputStream();
             byte[] buffer = new byte[1024];
             //number of bytes read into buffer

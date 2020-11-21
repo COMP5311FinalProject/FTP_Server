@@ -38,11 +38,13 @@ public class PasvService implements Service {
                 //String sIP = InetAddress.getLocalHost().getHostAddress();
                 String sIP = InetAddress.getLoopbackAddress().getHostAddress();
                 String sIPTokens = sIP.replace(".",",");
+
                 response = "2271 Switching to passive mode ("+sIPTokens +","+sPortToken1+","+sPortToken2+")\r\n";
             }
 
             writer.write(response);
             writer.flush();
+
 
             //start a new thread to complete data transfer.
             Socket dataSocket = serverSocket.accept();

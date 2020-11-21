@@ -18,14 +18,22 @@ public class RequestHandlerThread extends Thread{
     //number of times the client send request
     private int count = 0;
 
-    private String IP;
+    private String dataIP;
 
-    private String port;
+    private String dataPort;
 
     private String mode = "control";
 
     //login status
     private boolean isLogin = false;
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
 
     public RequestHandlerThread(Socket socket){
         this.socket = socket;
@@ -40,24 +48,28 @@ public class RequestHandlerThread extends Thread{
         this.isLogin = isLogin;
     }
 
-    public void setIP(String IP) {
-        this.IP = IP;
+    public boolean getIsLogin() {
+        return isLogin;
     }
 
-    public String getIP() {
-        return IP;
+    public void setDataIP(String dataIP) {
+        this.dataIP = dataIP;
     }
 
-    public String getPort() {
-        return port;
+    public String getDataIP() {
+        return dataIP;
+    }
+
+    public String getDataPort() {
+        return dataPort;
     }
 
     public Socket getSocket() {
         return socket;
     }
 
-    public void setPort(String port) {
-        this.port = port;
+    public void setDataPort(String dataPort) {
+        this.dataPort = dataPort;
     }
 
     public String getRootDir() {
@@ -66,6 +78,7 @@ public class RequestHandlerThread extends Thread{
 
     public void run(){
         System.out.println("=======new client connected======");
+        System.out.println("mode: " + this.getMode());
 
         BufferedReader reader;
         Writer writer;
