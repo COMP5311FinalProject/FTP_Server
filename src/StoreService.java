@@ -14,6 +14,7 @@ public class StoreService implements Service{
     public void getResponse(String data, Writer writer, RequestHandlerThread t) {
         System.out.println("------executing StoreService-------");
         System.out.println(data);
+        Socket fSocket = null;
 
         try {
             writer.write("150 Binary mode transfer\r\n");
@@ -23,7 +24,17 @@ public class StoreService implements Service{
             String inputFileDir = t.getRootDir() + "/" + data;
             RandomAccessFile inputFile = new RandomAccessFile(inputFileDir,"rw");
 
-            Socket fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
+            if(t.getDataPort() != null){
+                //FTP active mode
+                fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
+            }else{
+                //FTP Passive mode
+                fSocket = t.getDataSocket();
+            }
+
+            //Socket fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
+
+
             InputStream input = fSocket.getInputStream();
             byte[] buffer = new byte[1024];
             //number of bytes read into buffer

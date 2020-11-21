@@ -26,6 +26,7 @@ public class PortService implements Service {
         try {
             writer.write("200 ip and port for file transfer have been set up\r\n");
             writer.flush();
+            System.out.println(t.getDataPort());
         } catch (IOException e) {
             e.printStackTrace();
         }

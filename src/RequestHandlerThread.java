@@ -15,6 +15,9 @@ public class RequestHandlerThread extends Thread{
     //server-side socket
     private Socket socket;
 
+    //socket for data transfer
+    private Socket dataSocket = null;
+
     //number of times the client send request
     private int count = 0;
 
@@ -26,6 +29,14 @@ public class RequestHandlerThread extends Thread{
 
     //login status
     private boolean isLogin = false;
+
+    public Socket getDataSocket() {
+        return dataSocket;
+    }
+
+    public void setDataSocket(Socket dataSocket) {
+        this.dataSocket = dataSocket;
+    }
 
     public String getMode() {
         return mode;

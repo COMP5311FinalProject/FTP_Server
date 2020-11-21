@@ -23,7 +23,15 @@ public class RetrService implements Service {
                 writer.flush();
 
                 //set up socket for file transfer
-                fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
+                if(t.getDataPort() != null){
+                    //FTP active mode
+                    fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
+                }else{
+                    //FTP passive mode
+                    fSocket = t.getDataSocket();
+                }
+
+                //fSocket = new Socket(t.getDataIP(),Integer.parseInt(t.getDataPort()));
 
                 //declare input and output stream, and stream buffer for file transfer
                 BufferedOutputStream output = new BufferedOutputStream(fSocket.getOutputStream());

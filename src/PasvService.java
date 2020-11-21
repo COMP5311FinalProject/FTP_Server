@@ -45,11 +45,8 @@ public class PasvService implements Service {
             writer.write(response);
             writer.flush();
 
-
-            //start a new thread to complete data transfer.
-            Socket dataSocket = serverSocket.accept();
-            RequestHandlerThread dataThread = new RequestHandlerThread(dataSocket,"data");
-            dataThread.start();
+            //waiting for client to establish connection for file transfer
+            t.setDataSocket(serverSocket.accept());
         } catch (IOException e) {
             e.printStackTrace();
         }
