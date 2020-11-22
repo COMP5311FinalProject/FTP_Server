@@ -20,7 +20,7 @@ public class PasvService implements Service {
 
             while(serverSocket == null){
                 //generate a random int from 1025 to 9999 as port NO.
-                sPort = (int)(Math.random()*(9999-1025+1))+1025;
+                sPort = (int) (Math.random() * 100000) % 9999 + 1024;
                 serverSocket = new ServerSocket(sPort);
             }
 

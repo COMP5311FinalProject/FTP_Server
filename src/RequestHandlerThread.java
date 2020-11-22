@@ -126,10 +126,12 @@ public class RequestHandlerThread extends Thread{
                             String response = "502 cannot resolve requested service type";
                         }else{
                             //extract param data if any
-                            String data = "";
-                            if(rawData.length >= 2){
-                                data = rawData[1];
-                            }
+                            /**
+                             * In case,there are some spaces in the file name.
+                             * Get the full name of the file
+                             */
+                            int index = request.indexOf(" ");
+                            String data = request.substring(index+1);
                             //run requested service
                             service.getResponse(data,writer,this);
                         }
