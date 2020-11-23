@@ -22,8 +22,6 @@ public class MyFTPServer {
             e.printStackTrace();
         }
 
-        //initialize data required to run handler threads;
-        ThreadScopeData.init();
     }
 
     public void listen() throws IOException{
@@ -39,24 +37,22 @@ public class MyFTPServer {
     public static void main(String[] args) {
         System.out.println("========booting up server========");
 
-        //get config file path
-        String configPath = System.getProperty("user.dir") + "/config/serverconfig.xml";
-        File file = new File(configPath);
-        SAXBuilder builder = new SAXBuilder();
-        try {
-            //get port No. from config file
-            Document parse = builder.build(file);
-            Element root = parse.getRootElement();
-            int port = Integer.parseInt(root.getChildText("port"));
+        //initialize data required to run handler threads;
+        ThreadScopeData.init();
 
-            //boot up server
-            MyFTPServer server = new MyFTPServer(port);
+        //get control port NO.
+        int port = Integer.parseInt(ThreadScopeData.port);
+
+        //boot up server
+        MyFTPServer server = new MyFTPServer(port);
+
+        try {
             server.listen();
-        } catch (JDOMException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
     }
 }
