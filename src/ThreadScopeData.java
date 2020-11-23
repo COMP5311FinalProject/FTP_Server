@@ -27,6 +27,9 @@ public class ThreadScopeData {
     //users who have logged in
     public static HashSet<String> userLogined = new HashSet<>();
 
+    //server port NO
+    public static String port = null;
+
     //initialize
     public static void init(){
 
@@ -43,6 +46,9 @@ public class ThreadScopeData {
 
             //initialize root directory for threads
             rootDir = root.getChildText("rootDir");
+
+            //initialize server port info
+            port = root.getChildText("port");
 
             //initialize authorized users' info
             List<Element> usersEleList = root.getChild("users").getChildren();
