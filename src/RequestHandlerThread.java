@@ -148,6 +148,11 @@ public class RequestHandlerThread extends Thread{
             e.printStackTrace();
         }finally {
             System.out.println("Execution completed. Connection terminated");
+//            try {
+//                socket.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 

@@ -26,6 +26,7 @@ public class PasvService implements Service {
 
             if(serverSocket != null && sPort != -1){
                 //encrypt sPort with into 2 tokens for client to decipher
+                t.setDataPort(null);
                 int sPortToken1 = sPort/256;
                 int sPortToken2 = sPort - sPortToken1*256;
 

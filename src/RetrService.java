@@ -41,6 +41,7 @@ public class RetrService implements Service {
                 int bytesRead = 0;
                 while((bytesRead = input.read(buffer)) != -1){
                     output.write(buffer,0,bytesRead);
+
                 }
                 output.flush();
                 output.close();
